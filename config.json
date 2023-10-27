@@ -1,0 +1,31 @@
+{
+    "siteFavicon": "img/favicon.png",
+    "siteLogo": "📦",
+    "siteName": "Cadastro de Trecos",
+    "siteSlogan": "Acumuladores ao Extremo!",
+    "apiBaseURL": "http://localhost:3000/",
+    "siteYear": 2019,
+    "siteOwner": "Eu Mesmo!",
+    "siteMenu": [
+        {
+            "href": "home",
+            "label": "Início",
+            "icon": "fa-solid fa-house"
+        },
+        {
+            "href": "new",
+            "label": "Novo",
+            "icon": "fa-solid fa-circle-plus"
+        },
+        {
+            "href": "contacts",
+            "label": "Contatos",
+            "icon": "fa-solid fa-comments"
+        },
+        {
+            "href": "about",
+            "label": "Sobre",
+            "icon": "fa-solid fa-circle-info"
+        }
+    ]
+}
