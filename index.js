@@ -12,6 +12,7 @@ function runApp() {
             delete sessionStorage.path;
             loadPage(path);
             $(document).on('click', 'a', routerLink);
+            $('#search').on('submit', search);
         }).fail((e) => {
             console.error(e.statusText);
             alert(`Erro! Arquivo de configuração não encontrado...`);
@@ -21,7 +22,7 @@ function runApp() {
 function configureTheme() {
     $('link[rel="icon"]').attr('href', app.siteFavicon);
     header = `
-        <a href="home" title="${app.siteName}">${app.siteLogo}</a>
+        <a href="home" title="${app.siteName}"><img src="${app.siteLogo}" alt="${app.siteName}"></a>
         <h1>${app.siteName}</h1>
     `;
     app.siteMenu.forEach(item => {
@@ -83,6 +84,18 @@ function changeTitle(title = '') {
     else pageTitle += title
     $('title').html(pageTitle)
     document.title = pageTitle;
+}
+
+function search() {
+    var query = stripTags($("input[name='q']").val());
+    console.log(query);
+    return false;
+}
+
+function stripTags(htmlText) {
+    let div = document.createElement('div');
+    div.innerHTML = htmlText.trim().replace(/<script>.*<\/script>/, '');
+    return div.textContent;
 }
 
 $(document).ready(runApp);

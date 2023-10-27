@@ -39,22 +39,49 @@ header {
     background-color: rgba(255, 255, 255, .5);
 }
 
-header div {
+header>div {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
     max-width: 1024px;
     margin: auto;
 }
 
-header a {
+header>div>div,
+header>div>form {
+    display: flex;
+    align-items: center;
+}
+
+#search {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+#search input {
+    border-radius: .3rem 0 0 .3rem;
+    background-color: #eee;
+    flex-grow: 1;
+}
+
+#search button {
+    border-radius: 0 .3rem .3rem 0;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+header img {
     display: block;
-    font-size: 4rem;
-    margin: 0 1rem .5rem 0;
+    height: 4rem;
+    width: auto;
+    margin: 1rem;
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 1rem;
     font-family: arial black;
     line-height: .9;
     text-align: center;
@@ -155,6 +182,24 @@ footer>div>a {
 
 @media (min-width: 768px) {
 
+    header>div {
+        flex-direction: row;
+        width: auto;
+        max-width: auto;
+        margin: auto;
+    }
+
+    header>div>div {
+        flex-grow: 1;
+    }
+
+    #search {
+        min-width: 15rem;
+        max-width: 15rem;
+        padding: 0;
+        margin: 0 1.5rem;
+    }
+
     nav a {
         flex-direction: row;
         padding: 1rem;
@@ -176,4 +221,16 @@ footer>div>a {
         min-width: 15rem;
         max-width: 15rem;
     }
+}
+
+/* Form fields */
+input[type=text],
+input[type=search],
+input[type=email],
+button,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    padding: .35rem .5rem;
+    border: none;
 }
