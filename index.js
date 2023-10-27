@@ -46,13 +46,16 @@ function configureTheme() {
 }
 
 function routerLink() {
-    var href = $(this).attr('href').trim().toLowerCase()
+    var href = $(this).attr('href').trim().toLowerCase();
+    if (href == '#top') {
+        window.scrollTo(0, 0);
+        return false;
+    }
     if (
         href.substring(0, 7) == 'http://' ||
         href.substring(0, 8) == 'https://' ||
         href.substring(0, 4) == 'tel:' ||
-        href.substring(0, 7) == 'mailto:' ||
-        href.substr(0, 1) == '#'
+        href.substring(0, 7) == 'mailto:'
     ) return true;
     loadPage(href);
     return false;
