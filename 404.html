@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <base href="/">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erro 404</title>
-    <script>
-        const path = window.location.pathname.split('/')[1];
-        sessionStorage.path = path;
-        window.location.href = '';
-    </script>
-</head>
-
-<body>
-
-</body>
-
-</html>
+<script>
+    const path = window.location.pathname.split('/')[1];
+    sessionStorage.path = path;
+    window.location.href = 'index.html';
+</script>
