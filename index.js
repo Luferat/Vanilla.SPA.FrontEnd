@@ -66,9 +66,9 @@ function loadPage(route, updateURL = true) {
     }
     $.get(page.html)
         .done(htmlData => {
-            $('#pageCSS').attr('href', page.css)
-            $('#content').html(htmlData)
-            $.getScript(page.js)
+            $('#pageCSS').attr('href', page.css);
+            $('#content').html(htmlData);
+            $.getScript(page.js);
         })
         .fail(() => {
             loadPage('e404', false);
@@ -79,10 +79,12 @@ function loadPage(route, updateURL = true) {
 }
 
 function changeTitle(title = '') {
-    let pageTitle = app.siteName + ' - '
-    if (title == '') pageTitle += app.siteSlogan
-    else pageTitle += title
-    $('title').html(pageTitle)
+    let pageTitle = app.siteName + ' - ';
+    if (title == '')
+        pageTitle += app.siteSlogan;
+    else
+        pageTitle += title;
+    $('title').html(pageTitle);
     document.title = pageTitle;
 }
 
@@ -96,6 +98,14 @@ function stripTags(htmlText) {
     let div = document.createElement('div');
     div.innerHTML = htmlText.trim().replace(/<script>.*<\/script>/, '');
     return div.textContent;
+}
+
+function now() {
+    let yourDate = new Date();
+    yourDate = new Date(yourDate.getTime() - (yourDate.getTimezoneOffset() * 60 * 1000));
+    const dateParts = yourDate.toISOString().split('T');
+    const timeParts = dateParts[1].split('.')[0];
+    return dateParts[0] + ' ' + timeParts;
 }
 
 $(document).ready(runApp);
