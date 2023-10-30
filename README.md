@@ -13,7 +13,7 @@ Um site *front-end* experimental, bem simples no paradigma SPA (*Single Page App
  - Código muito simples que pode ser rapidamente adaptado para diversos pequenos cases;
  - Paradigma SPA, onde só temos uma página, diminuindo reloads e consumo de banda;
  - Suporta PWA (*Progressive Web Application*), permitindo a instalação na forma de WebApp;
- - HTML/CSS responsivo;
+ - HTML/CSS responsivo e sem frameworks CSS;
  - Usa o framework [jQuery](https://jquery.com/) para acessar o DOM;
  - Usa a bilbioteca de ícones [Font Awesome](https://fontawesome.com/);
  - Personalização rápida a partir de um arquivo JSON → `config.json`.
