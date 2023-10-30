@@ -12,13 +12,13 @@
     <link rel="icon" href="favicon.png">
     <link rel="manifest" href="manifest.json">
     <script>
-        // https://pwa-factory.com/
+        // PWA By https://pwa-factory.com/
         if ('serviceWorker' in navigator) {
             window.addEventListener("load", () => {
                 navigator.serviceWorker.register('service-worker.js').then(function (registration) {
-                    console.log('ServiceWorker registered');
+                    console.log('ServiceWorker registrado');
                 }).catch(function (err) {
-                    console.log('ServiceWorker error: ', err);
+                    console.log('Falha no serviceWorker: ', err);
                 });
             })
         }

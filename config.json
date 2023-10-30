@@ -1,6 +1,6 @@
 {
-    "siteFavicon": "img/favicon.png",
-    "siteLogo": "img/logotipo.png",
+    "siteFavicon": "assets/img/favicon.png",
+    "siteLogo": "assets/img/logotipo.png",
     "siteName": "Cadastro de Trecos",
     "siteSlogan": "Acumuladores ao Extremo!",
     "apiBaseURL": "http://localhost:3000/",
