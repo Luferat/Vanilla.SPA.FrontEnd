@@ -10,14 +10,14 @@ Um site *front-end* experimental, bem simples no paradigma SPA (*Single Page App
 
 ## Características
 
- - Código muito simples que pode ser rapidamente adaptado para diversos pequenos cases;
- - Paradigma SPA, onde só temos uma página, diminuindo reloads e consumo de banda;
- - Suporta PWA (*Progressive Web Application*), permitindo a instalação na forma de WebApp;
- - HTML/CSS responsivo e sem frameworks CSS;
- - Usa o framework [jQuery](https://jquery.com/) para acessar o DOM;
- - Usa a bilbioteca de ícones [Font Awesome](https://fontawesome.com/);
- - Personalização rápida a partir de um arquivo JSON → `config.json`.
- - ...
+- Código muito simples que pode ser rapidamente adaptado para diversos pequenos cases;
+- Paradigma SPA, onde só temos uma página, diminuindo reloads e consumo de banda;
+- Suporta PWA (*Progressive Web Application*), permitindo a instalação na forma de WebApp;
+- HTML/CSS responsivo e sem frameworks CSS;
+- Usa o framework [jQuery](https://jquery.com/) para acessar o DOM;
+- Usa a bilbioteca de ícones [Font Awesome](https://fontawesome.com/);
+- Personalização rápida a partir de um arquivo JSON → `config.json`.
+- ...
 
 ## Obtendo
 
@@ -31,18 +31,22 @@ Um site *front-end* experimental, bem simples no paradigma SPA (*Single Page App
 
 1. Abra o aplicativo **Git Bash** no computador local;
 2. Digite `pwd` e verifique se o prompt aponta para a pasta do usuário atual, por exemplo:
-```
+
+```git
 /c/Users/16129532023.1
 ```
+
 3. Se ainda não tem, crie uma pasta raiz para seus projetos comandando `mkdir projects`;
 4. Acesse a pasta dos projetos comandando `cd projects`;
 5. Acesse o repositório do aplicativo no seu GitHub.com;
 6. Clique no botão **`[<> Code ▾]`**;
 7. Na guia **Local**, clique em **HTTPS**, selecione e copie o endereço do mesmo repositório;
 8. De volta ao **Git Bash**, se você está em uma rede com **SSL Self Signed** como a rede escolar, comande:
-```
+
+```git
 git config --global http.sslVerify false
 ```
+
 9.  Agora, digite `git clone` seguido de um espaço;
 10. Na mesma linha, cole o endereço do repositório com o botão direito do mouse (*paste*) ou teclando `[Shift]`+`[Insert]`;
        - Teremos algo como `git clone https://github.com/seuUserName/Vanilla.SPA.FrontEnd.git`.
@@ -58,44 +62,51 @@ Sempre que for trabalhar com os códigos fonte, seja para dar manutenção ou ge
 
 > *Branches* funcionam como linhas do tempo alternativas onde você pode mexer e testar os códigos sem alterar a linha do tempo principal (main) até que tenha certeza de que as novas implementações tiveram o resultado esperado.
 
-Para criar um novo branch, no **Git Bash**, digite `git checkout -b 2023.10.31.01`, onde, o último trecho é a identificação da versão que será trabalhada. 
+Para criar um novo branch, no **Git Bash**, digite `git checkout -b 2023.10.31.01`, onde, o último trecho é a identificação da versão que será trabalhada.
 Você pode obter uma lista resumida de comandos **Git** [aqui](https://gist.github.com/Luferat/ffb0d5c67131c4152ba54f984e26b28d) ou espalhadas pela Internet.
 
 > No exemplo estamos usando o versionamento pela data (2023.10.31.01) que é bastante recomendado, mas você pode usar outros formatos.
 
 Ao concluir as atividades, faça **commit** das alterações comandando no **Git Bash**:
-```
+
+```git
 git commit -a -m "Versão atualizada do aplicativo"
 ```
+
 Onde, "Versão atualizada do aplicativo" pode ser trocado por uma mensagem mais explicativa sobre as alterações deste branch.
 
 Se este *branch* contém uma tarefa concluída e pode ser integrado ao aplicativo principal, faça o seguinte:
 
- - Publique o *branch* atual no repositório **Origin** (GitHub.com neste caso), comandando:
-     - Lembre-se de trocar `2023.10.31.01` pelo nome do branch atual.
-     - Neste momento, pode ocorrer do *Git* solicitar que você faça login no *GitHub.com*, apenas clique em `[Continue with browser]` ou algo similar.
-```
+- Publique o *branch* atual no repositório **Origin** (GitHub.com neste caso), comandando:
+  - Lembre-se de trocar `2023.10.31.01` pelo nome do branch atual.
+  - Neste momento, pode ocorrer do *Git* solicitar que você faça login no *GitHub.com*, apenas clique em `[Continue with browser]` ou algo similar.
+
+```git
 git push --set-upstream origin 2023.10.31.01
 ```
- - Mude para o branch do aplicativo principal, `main` ou `master`, comandando `git checkout main` ou `git checkout master`;
- - Faça o *merge* do *branch* principal com o branch mais recente, comandando `git merge 2023.10.31.01`;
- - Finalmente, publique o *branch* principal, comandando `git push`.
+
+- Mude para o branch do aplicativo principal, `main` ou `master`, comandando `git checkout main` ou `git checkout master`;
+- Faça o *merge* do *branch* principal com o branch mais recente, comandando `git merge 2023.10.31.01`;
+- Finalmente, publique o *branch* principal, comandando `git push`.
 
 > Para quem tem problemas com comandos, quer melhorar a produtividade ou ambos, sugiro instalar e aprender a usar o aplicativo [GitHub Desktop](https://desktop.github.com/) que é uma interface gráfica para Git e GitHub.com. 
 > Ela torna a interação com essas ferramentas um pouco mais amigável e segura.
 > [Nesta playlist](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA) tem um ótimo curso desta ferramenta para quem está começando.
 
 ## Rodando o aplicativo localmente
+
 O aplicativo roda em praticamente qualquer servidor Web, mas funciona de forma instável com os que tem "auto-reload" como os "LiveServer" que podemos usar no **VSCode**, por exemplo.
 Uma sugestão é usar o [http-server](https://github.com/http-party/http-server).
 
 Para instalar o servidor, ainda usando o **Git Bash**, comande `npm install --global http-server`.
 
 Se o comando `npm install` acima falhar porque você está em uma rede com **SSL Self-Signed**, como na rede escolar, insira cada um dos comandos abaixo e depois, tente o `npm install` novamente:
-```
+
+```git
 npm config set strict-ssl false
 set NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
+
 Para rodar o aplicativo, acesse a pasta desde (se já não estiver nela), você deve estar exatamente na pasta onde existe o arquivo `index.html`. Então, comande `http-server`.
 
 Para ver o site funcionando, abra o endereço `http://localhost:8080` no navegador. 
@@ -122,30 +133,35 @@ Se você deseja fazer logout ou alterar as credenciais que o Git usa localmente,
 
 #### No Windows:
 
- - Abra o "Gerenciador de Credenciais" no Painel de Controle.
- - Em "Credenciais do Windows", você encontrará as credenciais armazenadas para o Git. Você pode removê-las daqui.
+- Abra o "Gerenciador de Credenciais" no Painel de Controle.
+- Em "Credenciais do Windows", você encontrará as credenciais armazenadas para o Git. Você pode removê-las daqui.
 
 #### No macOS:
 
- - Abra o "Acesso às Chaves" (Keychain Access) na pasta "Utilitários".
- - Procure as credenciais relacionadas ao Git e remova-as.
-   
+- Abra o "Acesso às Chaves" (Keychain Access) na pasta "Utilitários".
+- Procure as credenciais relacionadas ao Git e remova-as.
+
 #### No Linux:
 
- - No Linux, as credenciais geralmente são armazenadas no arquivo ~/.git-credentials.
- - Você pode editar esse arquivo manualmente para remover as credenciais.
+- No Linux, as credenciais geralmente são armazenadas no arquivo ~/.git-credentials.
+- Você pode editar esse arquivo manualmente para remover as credenciais.
 
 Além disso, você pode configurar o Git para usar credenciais específicas para um repositório, o que permite que você "troque" de conta ao clonar ou trabalhar em diferentes repositórios.
 Para fazer isso, use os comandos:
- - Para configurar um nome de usuário e e-mail específicos para um repositório:
-```
+
+- Para configurar um nome de usuário e e-mail específicos para um repositório:
+
+```git
 git config --local user.name "Seu Nome"
 git config --local user.email "seu@email.com"
 ```
- - Para configurar um nome de usuário específico para um repositório:
-```
+
+- Para configurar um nome de usuário específico para um repositório:
+
+```git
 git config --local credential.username "SeuNomeDeUsuário"
 ```
+
 Isso permitirá que você mude as credenciais de usuário em um repositório específico sem afetar globalmente as configurações do Git.
 
 Lembre-se de que o Git não mantém uma sessão ativa como uma plataforma online, então a autenticação é feita localmente e depende das configurações do Git e do sistema operacional.
