@@ -39,17 +39,18 @@ Um site *front-end* experimental, bem simples no paradigma SPA (*Single Page App
 5. Acesse o repositório do aplicativo no seu GitHub.com;
 6. Clique no botão **`[<> Code ▾]`**;
 7. Na guia **Local**, clique em **HTTPS**, selecione e copie o endereço do mesmo repositório;
-8. Se você está em uma rede com **SSL Self Signed** como a rede escolar, comande:
+8. De volta ao **Git Bash**, se você está em uma rede com **SSL Self Signed** como a rede escolar, comande:
 ```
 git config --global http.sslVerify false
 ```
-9. De volta ao **Git Bash**, digite `git clone `;
-10. Na mesma linha, cole o endereço do repositório com o botão direito do mouse ou teclando `[Shift]+[Insert]`;
-   - Teremos algo como `git clone https://github.com/seuUserName/Vanilla.SPA.FrontEnd.git`.
+9.  Agora, digite `git clone` seguido de um espaço;
+10. Na mesma linha, cole o endereço do repositório com o botão direito do mouse (*paste*) ou teclando `[Shift]`+`[Insert]`;
+       - Teremos algo como `git clone https://github.com/seuUserName/Vanilla.SPA.FrontEnd.git`.
 11. Tecle `[Enter]` para fazer a *clonagem*;
-12. Acesse a pasta local comandando `cd Vanilla.SPA.FrontEnd`.
+12. Acesse a pasta local do projeto comandando `cd Vanilla.SPA.FrontEnd`.
 
-Agora que tem os códigos fonte, pode trabalhar na sua versão do aplicativo.
+Agora que tem os códigos fonte, pode trabalhar na sua versão do aplicativo. 
+Se você tem o [**Visual Studio Code**](https://code.visualstudio.com/docs/?dv=win64user) corretamente instalado e deseja usá-lo, comande `code .`.
 
 ## Versionando
 
@@ -57,21 +58,47 @@ Sempre que for trabalhar com os códigos fonte, seja para dar manutenção ou ge
 
 > *Branches* funcionam como linhas do tempo alternativas onde você pode mexer e testar os códigos sem alterar a linha do tempo principal (main) até que tenha certeza de que as novas implementações tiveram o resultado esperado.
 
-Para criar um novo branch, no **Git Bash**, digite `git checkout -b 2023.10.30.01`, onde, o último trecho é a identificação da versão que será trabalhada. Você pode obter uma lista resumida de comandos **Git** [aqui](https://gist.github.com/Luferat/ffb0d5c67131c4152ba54f984e26b28d) ou espalhadas pela Internet.
+Para criar um novo branch, no **Git Bash**, digite `git checkout -b 2023.10.31.01`, onde, o último trecho é a identificação da versão que será trabalhada. 
+Você pode obter uma lista resumida de comandos **Git** [aqui](https://gist.github.com/Luferat/ffb0d5c67131c4152ba54f984e26b28d) ou espalhadas pela Internet.
 
-> No exemplo estamos usando o versionamento pela data que é bastante recomendado, mas você pode usar outros formatos.
+> No exemplo estamos usando o versionamento pela data (2023.10.31.01) que é bastante recomendado, mas você pode usar outros formatos.
 
-Para quem tem problemas com comandos, quer melhorar a produtividade ou ambos, sugiro instalar e aprender a usar o aplicativo [GitHub Desktop](https://desktop.github.com/) que é uma interface gráfica para Git e GitHub.com. Ela torna a interação com essas ferramentas um pouco mais amigável e segura.
+Ao concluir as atividades, faça **commit** das alterações comandando no **Git Bash**:
+```
+git commit -a -m "Versão atualizada do aplicativo"
+```
+Onde, "Versão atualizada do aplicativo" pode ser trocado por uma mensagem mais explicativa sobre as alterações deste branch.
 
-[Esta playlist](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA) tem um ótimo curso desta ferramenta para quem está começando.
+Se este *branch* contém uma tarefa concluída e pode ser integrado ao aplicativo principal, faça o seguinte:
+
+ - Publique o *branch* atual no repositório **Origin** (GitHub.com neste caso), comandando `git push --set-upstream origin 2023.10.31.01`;
+     - Lembre-se de trocar `2023.10.31.01` pelo nome do branch atual.
+     - Neste momento, pode ocorrer do *Git* solicitar que você faça login no *GitHub.com*, apenas clique em `[Continue with browser]` ou algo similar.
+ - Mude para o branch do aplicativo principal, `main` ou `master`, comandando `git checkout main` ou `git checkout master`;
+ - Faça o *merge* do *branch* principal com o branch mais recente, comandando `git merge 2023.10.31.01`;
+ - Finalmente, publique o *branch* principal, comandando `git push`.
+
+Para quem tem problemas com comandos, quer melhorar a produtividade ou ambos, sugiro instalar e aprender a usar o aplicativo [GitHub Desktop](https://desktop.github.com/) que é uma interface gráfica para Git e GitHub.com. 
+Ela torna a interação com essas ferramentas um pouco mais amigável e segura.
+[Nesta playlist](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA) tem um ótimo curso desta ferramenta para quem está começando.
 
 ## Rodando o aplicativo localmente
-O aplicativo roda em praticamente qualquer servidor Web, mas funciona de forma instável com os que tem "auto-reload" como os "LiveServer" que podemos usar no **VSCode**, por exemplo. Uma sugestão é usar o [http-server](https://github.com/http-party/http-server).
+O aplicativo roda em praticamente qualquer servidor Web, mas funciona de forma instável com os que tem "auto-reload" como os "LiveServer" que podemos usar no **VSCode**, por exemplo.
+Uma sugestão é usar o [http-server](https://github.com/http-party/http-server).
 
 Para instalar o servidor, ainda usando o **Git Bash**, comande `npm install --global http-server`.
 
+Se o comando `npm install` acima falhar poque você está em uma rede com **SSL Self-Signed**, como na rede escolar, insira cada um dos comandos abaixo e depois, tente o `npm install` novamente:
+```
+npm config set strict-ssl false
+set NODE_TLS_REJECT_UNAUTHORIZED=0
+```
 Para rodar o aplicativo, acesse a pasta desde (se já não estiver nela), você deve estar exatamente na pasta onde existe o arquivo `index.html`. Então, comande `http-server`.
 
-Para ver o site funcionando, abra o endereço `http://localhost:8080` no navegador. A porta pode ser diferente de `8080`se esta já estiver ocupada por outro aplicativo. Neste caso o `http-server` tentará a porta `8081`, depois `8082` e assim por diante. Na mensagem de execução ele informa a porta operacional.
+Para ver o site funcionando, abra o endereço `http://localhost:8080` no navegador. 
+A porta pode ser diferente de `8080`, se esta já estiver ocupada por outro aplicativo.
+Neste caso o `http-server` tentará a porta `8081`, depois `8082` e assim por diante.
+Na mensagem de execução ele informa a porta operacional.
 
-Também é possível especificar a porta manualmente comandando `http-server -p 8088`, por exemplo. Lembre-se ainda que o **Git Bash** ficará bloqueado até você teclar `[ctrl]+[C]` para interromper o servidor.
+Também é possível especificar a porta manualmente comandando `http-server -p 8088`, por exemplo. 
+Lembre-se ainda que o **Git Bash** ficará bloqueado até você teclar `[ctrl]`+`[C]` para interromper o servidor.
