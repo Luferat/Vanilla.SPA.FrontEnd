@@ -1,5 +1,6 @@
 var app;
 var header = menu = license = '';
+$(document).ready(runApp);
 
 function runApp() {
     $.get('config.json')
@@ -110,5 +111,3 @@ function now() {
     const timeParts = dateParts[1].split('.')[0];
     return dateParts[0] + ' ' + timeParts;
 }
-
-$(document).ready(runApp);
