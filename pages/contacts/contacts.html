@@ -1,6 +1,38 @@
 <article>
-    <h2>Faça Contato</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ipsa exercitationem, hic illum eum quidem velit tempora deleniti magni quasi cumque eveniet. Corporis eos doloribus et eaque necessitatibus! Placeat, quaerat!</p>
+
+    <h2>Faça contato</h2>
+
+    <form id="contacts">
+
+        <p>Preencha os campo abaixo para entrar em contato com a equipe do <span id="siteName">Vanilla SPA Front-End</span>.</p>
+
+        <p>
+            <label for="name">Nome:</label>
+            <input type="text" name="name" id="name" placeholder="Seu nome completo" required minlength="3">
+        </p>
+
+        <p>
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email" placeholder="Seu e-mail válido" required>
+        </p>
+
+        <p>
+            <label for="subject">Assunto:</label>
+            <input type="text" name="subject" id="subject" placeholder="Motivo do contato" required minlength="5">
+        </p>
+
+        <p>
+            <label for="message">Mensagem:</label>
+            <textarea name="message" id="message" placeholder="Escreva a mensagem" required minlength="5"></textarea>
+        </p>
+
+        <p class="submit-button">
+            <button type="submit" id="submit-button">Enviar</button>
+            <small>&larr; Clique somente uma vez.</small>
+        </p>
+
+    </form>
+
 </article>
 
 <aside>

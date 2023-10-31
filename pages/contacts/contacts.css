@@ -1,0 +1,48 @@
+#contacts {
+    display: table;
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+#contacts label {
+    display: block;
+    padding-bottom: .25rem;
+}
+
+#contacts input,
+#contacts textarea {
+    border: 1px solid red;
+    border-bottom: 3px solid red;
+    background-color: rgb(255, 230, 230);
+    border-radius: .3rem;
+    width: 100%;
+}
+
+#contacts textarea {
+    resize: vertical;
+}
+
+#contacts button {
+    background-color: steelblue;
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    color: white;
+    cursor: pointer;
+}
+
+#contacts small {
+    color: grey;
+}
+
+#contacts input:valid,
+#contacts textarea:valid {
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+    background-color: rgb(232, 240, 254);
+}
+
+#contacts:invalid button {
+    background-image: linear-gradient(rgb(172, 172, 172), rgb(76, 76, 76));
+    pointer-events: none;
+}

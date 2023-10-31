@@ -234,3 +234,22 @@ textarea {
     padding: .35rem .5rem;
     border: none;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-button {
+    background-color: transparent;
+    height: 15px;
+    color: black;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(94, 173, 237);
+    border: none;
+};
