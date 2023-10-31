@@ -10,22 +10,54 @@
         {
             "href": "home",
             "label": "Início",
-            "icon": "fa-solid fa-house"
+            "icon": "fa-solid fa-house fa-fw"
         },
         {
             "href": "new",
             "label": "Novo",
-            "icon": "fa-solid fa-circle-plus"
+            "icon": "fa-solid fa-circle-plus fa-fw"
         },
         {
             "href": "contacts",
             "label": "Contatos",
-            "icon": "fa-solid fa-comments"
+            "icon": "fa-solid fa-comments fa-fw"
         },
         {
             "href": "about",
             "label": "Sobre",
-            "icon": "fa-solid fa-circle-info"
+            "icon": "fa-solid fa-circle-info fa-fw"
+        }
+    ],
+    "socialList": [
+        {
+            "href": "https://wa.me/5521987654321",
+            "title": "Fale conosco pelo WhatsApp",
+            "icon": "fa-brands fa-square-whatsapp fa-fw"
+        },
+        {
+            "href": "tel:5521987654321",
+            "title": "Fale conosco pelo telefone",
+            "icon": "fa-solid fa-square-phone fa-fw"
+        },
+        {
+            "href": "mailto:none@none.com",
+            "title": "Fale conosco por e-mail",
+            "icon": "fa-solid fa-square-envelope fa-fw"
+        },
+        {
+            "href": "https://facebook.com/frontendeiros",
+            "title": "Siga-nos no Facebook",
+            "icon": "fa-brands fa-square-facebook fa-fw"
+        },
+        {
+            "href": "https://github.com/frontendeiros",
+            "title": "Siga-nos no GitHub",
+            "icon": "fa-brands fa-square-github fa-fw"
+        },
+        {
+            "href": "https://instagram.com/frontendeiros",
+            "title": "Siga-nos no Instagram",
+            "icon": "fa-brands fa-square-instagram fa-fw"
         }
     ]
 }
