@@ -81,9 +81,9 @@ git push --set-upstream origin 2023.10.31.01
  - Faça o *merge* do *branch* principal com o branch mais recente, comandando `git merge 2023.10.31.01`;
  - Finalmente, publique o *branch* principal, comandando `git push`.
 
-Para quem tem problemas com comandos, quer melhorar a produtividade ou ambos, sugiro instalar e aprender a usar o aplicativo [GitHub Desktop](https://desktop.github.com/) que é uma interface gráfica para Git e GitHub.com. 
-Ela torna a interação com essas ferramentas um pouco mais amigável e segura.
-[Nesta playlist](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA) tem um ótimo curso desta ferramenta para quem está começando.
+> Para quem tem problemas com comandos, quer melhorar a produtividade ou ambos, sugiro instalar e aprender a usar o aplicativo [GitHub Desktop](https://desktop.github.com/) que é uma interface gráfica para Git e GitHub.com. 
+> Ela torna a interação com essas ferramentas um pouco mais amigável e segura.
+> [Nesta playlist](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA) tem um ótimo curso desta ferramenta para quem está começando.
 
 ## Rodando o aplicativo localmente
 O aplicativo roda em praticamente qualquer servidor Web, mas funciona de forma instável com os que tem "auto-reload" como os "LiveServer" que podemos usar no **VSCode**, por exemplo.
@@ -91,7 +91,7 @@ Uma sugestão é usar o [http-server](https://github.com/http-party/http-server)
 
 Para instalar o servidor, ainda usando o **Git Bash**, comande `npm install --global http-server`.
 
-Se o comando `npm install` acima falhar poque você está em uma rede com **SSL Self-Signed**, como na rede escolar, insira cada um dos comandos abaixo e depois, tente o `npm install` novamente:
+Se o comando `npm install` acima falhar porque você está em uma rede com **SSL Self-Signed**, como na rede escolar, insira cada um dos comandos abaixo e depois, tente o `npm install` novamente:
 ```
 npm config set strict-ssl false
 set NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -105,3 +105,47 @@ Na mensagem de execução ele informa a porta operacional.
 
 Também é possível especificar a porta manualmente comandando `http-server -p 8088`, por exemplo. 
 Lembre-se ainda que o **Git Bash** ficará bloqueado até você teclar `[ctrl]`+`[C]` para interromper o servidor.
+
+## Encerrando as atividades do dia
+
+Se você não está na sua estação de trabalho particular, uma vez que os *branch* foram atualizados no **Origin** e você já encerrou as atividades com a *IDE*, faça logout em todas as plataformas que você usou:
+
+### No navegador
+
+Tecle `[Ctrl]`+`[Shift]`+`[Delete]` para remover todos os dados de navegação possíveis, *sem dó nem piedade*;
+
+### No Git
+
+O Git não mantém sessões ativas da mesma forma que as plataformas online, como o GitHub.com.
+O Git lida com a autenticação em um nível mais local.
+Se você deseja fazer logout ou alterar as credenciais que o Git usa localmente, siga estas etapas:
+
+#### No Windows:
+
+ - Abra o "Gerenciador de Credenciais" no Painel de Controle.
+ - Em "Credenciais do Windows", você encontrará as credenciais armazenadas para o Git. Você pode removê-las daqui.
+
+#### No macOS:
+
+ - Abra o "Acesso às Chaves" (Keychain Access) na pasta "Utilitários".
+ - Procure as credenciais relacionadas ao Git e remova-as.
+   
+#### No Linux:
+
+ - No Linux, as credenciais geralmente são armazenadas no arquivo ~/.git-credentials.
+ - Você pode editar esse arquivo manualmente para remover as credenciais.
+
+Além disso, você pode configurar o Git para usar credenciais específicas para um repositório, o que permite que você "troque" de conta ao clonar ou trabalhar em diferentes repositórios.
+Para fazer isso, use os comandos:
+ - Para configurar um nome de usuário e e-mail específicos para um repositório:
+```
+git config --local user.name "Seu Nome"
+git config --local user.email "seu@email.com"
+```
+ - Para configurar um nome de usuário específico para um repositório:
+```
+git config --local credential.username "SeuNomeDeUsuário"
+```
+Isso permitirá que você mude as credenciais de usuário em um repositório específico sem afetar globalmente as configurações do Git.
+
+Lembre-se de que o Git não mantém uma sessão ativa como uma plataforma online, então a autenticação é feita localmente e depende das configurações do Git e do sistema operacional.
