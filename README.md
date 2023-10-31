@@ -71,9 +71,12 @@ Onde, "Versão atualizada do aplicativo" pode ser trocado por uma mensagem mais 
 
 Se este *branch* contém uma tarefa concluída e pode ser integrado ao aplicativo principal, faça o seguinte:
 
- - Publique o *branch* atual no repositório **Origin** (GitHub.com neste caso), comandando `git push --set-upstream origin 2023.10.31.01`;
+ - Publique o *branch* atual no repositório **Origin** (GitHub.com neste caso), comandando:
      - Lembre-se de trocar `2023.10.31.01` pelo nome do branch atual.
      - Neste momento, pode ocorrer do *Git* solicitar que você faça login no *GitHub.com*, apenas clique em `[Continue with browser]` ou algo similar.
+```
+git push --set-upstream origin 2023.10.31.01
+```
  - Mude para o branch do aplicativo principal, `main` ou `master`, comandando `git checkout main` ou `git checkout master`;
  - Faça o *merge* do *branch* principal com o branch mais recente, comandando `git merge 2023.10.31.01`;
  - Finalmente, publique o *branch* principal, comandando `git push`.
