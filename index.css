@@ -211,7 +211,7 @@ footer>div>a {
         margin-right: .5rem;
     }
 
-    main div {
+    main>div {
         flex-direction: row;
     }
 
