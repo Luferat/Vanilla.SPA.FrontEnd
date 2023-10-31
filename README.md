@@ -30,16 +30,24 @@ Um site *front-end* experimental, bem simples no paradigma SPA (*Single Page App
 ## Clonando
 
 1. Abra o aplicativo **Git Bash** no computador local;
-2. Se ainda não tem, crie uma pasta raiz para seus projetos comandando `mkdir projects`;
-3. Acesse a pasta dos projetos comandando `cd projects`;
-4. Acesse o repositório do aplicativo no seu GitHub.com;
-5. Clique no botão **`[<> Code ▾]`**;
-6. Na guia **Local**, clique em **HTTPS**, selecione e copie o endereço do mesmo repositório;
-7. De volta ao **Git Bash**, digite `git clone `;
-8. Na mesma linha, cole o endereço do repositório com o botão direito do mouse ou teclando `[Shift]+[Insert]`;
+2. Digite `pwd` e verifique se o prompt aponta para a pasta do usuário atual, por exemplo:
+```
+/c/Users/16129532023.1
+```
+3. Se ainda não tem, crie uma pasta raiz para seus projetos comandando `mkdir projects`;
+4. Acesse a pasta dos projetos comandando `cd projects`;
+5. Acesse o repositório do aplicativo no seu GitHub.com;
+6. Clique no botão **`[<> Code ▾]`**;
+7. Na guia **Local**, clique em **HTTPS**, selecione e copie o endereço do mesmo repositório;
+8. Se você está em uma rede com **SSL Self Signed** como a rede escolar, comande:
+```
+git config --global http.sslVerify false
+```
+9. De volta ao **Git Bash**, digite `git clone `;
+10. Na mesma linha, cole o endereço do repositório com o botão direito do mouse ou teclando `[Shift]+[Insert]`;
    - Teremos algo como `git clone https://github.com/seuUserName/Vanilla.SPA.FrontEnd.git`.
-9. Tecle `[Enter]` para fazer a *clonagem*;
-10. Acesse a pasta local comandando `cd Vanilla.SPA.FrontEnd`.
+11. Tecle `[Enter]` para fazer a *clonagem*;
+12. Acesse a pasta local comandando `cd Vanilla.SPA.FrontEnd`.
 
 Agora que tem os códigos fonte, pode trabalhar na sua versão do aplicativo.
 
