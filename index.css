@@ -128,7 +128,7 @@ main {
     flex-grow: 1;
 }
 
-main div {
+main>div {
     position: relative;
     height: 100%;
     display: flex;
@@ -178,6 +178,12 @@ footer small {
 footer>div>a {
     padding: .5rem;
     font-size: 1.5rem;
+}
+
+nav *,
+header *,
+footer * {
+    transition: .15s;
 }
 
 @media (min-width: 768px) {
@@ -252,4 +258,6 @@ textarea {
 ::-webkit-scrollbar-thumb {
     background-color: rgb(94, 173, 237);
     border: none;
-};
+}
+
+;

@@ -1,8 +1,13 @@
 $(document).ready(myContacts)
 
+var htmlSocialList = '';
+
 function myContacts() {
     changeTitle('Faça contato');
+    makeSocialList();
     $('#contacts').submit(sendContact);
+    $('.contacts a').mouseover(animeIcon)
+    $('.contacts a').mouseout(noAnimeIcon)
 }
 
 function sendContact(ev) {
@@ -48,4 +53,23 @@ function sendContact(ev) {
 function saveData(data) {
     console.log(data);
     return true;
+}
+
+function makeSocialList() {
+    app.socialList.forEach(item => {
+        htmlSocialList += `
+            <a href="${item.href}" target="_blank" title="${item.title}">
+                <i class="${item.icon}"></i>
+            </a>
+        `;
+    });
+    $('#socialList').html(htmlSocialList);
+}
+
+function animeIcon() {
+    $(this).children('i').addClass('fa-beat-fade')
+}
+
+function noAnimeIcon() {
+    $(this).children('i').removeClass('fa-beat-fade')
 }

@@ -29,7 +29,7 @@ function configureTheme() {
     app.siteMenu.forEach(item => {
         menu += `
             <a href="${item.href}" title="${item.label}">
-                <i class="${item.icon} fa-fw"></i>
+                <i class="${item.icon}"></i>
                 <span>${item.label}</span>
             </a>
         `;
