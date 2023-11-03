@@ -39,7 +39,7 @@ function configureTheme() {
         todayYear = '';
     license = `
         &copy; ${app.siteYear} ${todayYear} ${app.siteOwner}
-        <small><a href="policies">Políticas de Privacidade</small>
+        <small><a href="policies">Políticas de Privacidade</a></small>
     `;
     $('#header').html(header);
     $('#menu').html(menu);
