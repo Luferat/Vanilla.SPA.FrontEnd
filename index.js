@@ -34,7 +34,7 @@ function configureTheme() {
             </a>
         `;
     });
-    const todayYear = new Date().getFullYear();
+let todayYear = new Date().getFullYear();
     if (todayYear == app.siteYear)
         todayYear = '';
     license = `
