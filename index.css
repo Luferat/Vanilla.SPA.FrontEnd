@@ -15,7 +15,7 @@ body {
 }
 
 body {
-    background-image: linear-gradient(to bottom right, #0c393d, #44a7b2);
+    background-image: linear-gradient(to bottom right, white, #ebeff0);
 }
 
 #wrap {
@@ -32,11 +32,11 @@ a {
 }
 
 a:hover {
-    color: orangered;
+    color: orange;
 }
 
 header {
-    background-color: rgba(255, 255, 255, .5);
+    background-color:#fefbea
 }
 
 header>div {
@@ -82,13 +82,13 @@ header img {
 
 header h1 {
     margin: 0 1rem;
-    font-family: arial black;
+    font-family: arial WHITE;
     line-height: .9;
     text-align: center;
 }
 
 nav {
-    background-color: black;
+    background-color: lightcoral;
 }
 
 nav div {
@@ -97,7 +97,7 @@ nav div {
     justify-content: flex-end;
     max-width: 1024px;
     margin: auto;
-    border: 1px solid black;
+    border: 1px solid lightcoral;
 }
 
 nav a {
@@ -117,7 +117,7 @@ nav a i {
 
 nav a:hover {
     background-color: rgba(255, 255, 255, .8);
-    color: black;
+    color: red;
 }
 
 nav div a:first-child {

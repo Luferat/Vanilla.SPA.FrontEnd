@@ -1,30 +1,30 @@
 {
-    "siteFavicon": "assets/img/favicon.png",
-    "siteLogo": "assets/img/logotipo.png",
-    "siteName": "Cadastro de Trecos",
+    "siteFavicon": "assets/img/favicon.avif",
+    "siteLogo": "assets/img/logotipo.avif",
+    "siteName": "LOVE PETS",
     "siteSlogan": "Acumuladores ao Extremo!",
     "apiBaseURL": "http://localhost:3000/",
-    "siteYear": 2019,
-    "siteOwner": "Eu Mesmo!",
+    "siteYear": 2023,
+    "siteOwner": "PETS!",
     "siteMenu": [
         {
             "href": "home",
-            "label": "Início",
+            "label": "",
             "icon": "fa-solid fa-house fa-fw"
         },
         {
             "href": "new",
-            "label": "Novo",
+            "label": "",
             "icon": "fa-solid fa-circle-plus fa-fw"
         },
         {
             "href": "contacts",
-            "label": "Contatos",
+            "label": "",
             "icon": "fa-solid fa-comments fa-fw"
         },
         {
             "href": "about",
-            "label": "Sobre",
+            "label": "",
             "icon": "fa-solid fa-circle-info fa-fw"
         }
     ],
