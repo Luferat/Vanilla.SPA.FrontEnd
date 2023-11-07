@@ -1,10 +1,11 @@
+// Variáveis globais (contexto global);
 var app;
 var header = menu = license = '';
 $(document).ready(runApp);
 
 function runApp() {
     $.get('config.json')
-        .done(data => {
+        .done(data => { // data é uma variável local (contexto local).
             app = data;
             configureTheme();
             if (sessionStorage.path == undefined)
@@ -34,7 +35,7 @@ function configureTheme() {
             </a>
         `;
     });
-    const todayYear = new Date().getFullYear();
+    let todayYear = new Date().getFullYear();
     if (todayYear == app.siteYear)
         todayYear = '';
     license = `
