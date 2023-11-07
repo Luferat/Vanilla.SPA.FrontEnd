@@ -1,6 +1,6 @@
 <script>
-    const parts = window.location.pathname.split('/');
-    path = parts[parts.length - 1];
-    sessionStorage.path = path;
-    window.location.href = './';
+    const parts = window.location.pathname.split('/'); // Recebe o endereço da página atual e extrai as partes.
+    path = parts[parts.length - 1]; // Obtém a prte final do endereço, que contém a rota da página.
+    sessionStorage.path = path; // Armazena a rota da página acessada na sessão.
+    window.location.href = './'; // Redireciona para a 'index.html' que processará a rota.
 </script>

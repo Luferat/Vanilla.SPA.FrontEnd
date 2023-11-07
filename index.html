@@ -8,18 +8,18 @@
     <title>Vanilla SPA Front-End</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="null.css" id="pageCSS">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" href="favicon.png">
     <link rel="manifest" href="manifest.json">
     <script>
         // PWA By https://pwa-factory.com/
         if ('serviceWorker' in navigator) {
             window.addEventListener("load", () => {
-                navigator.serviceWorker.register('service-worker.js').then(function (registration) {
-                    console.log('ServiceWorker registrado');
-                }).catch(function (err) {
-                    console.log('Falha no serviceWorker: ', err);
-                });
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function (registration) {
+                        console.log('ServiceWorker registrado');
+                    }).catch(function (err) {
+                        console.log('Falha no serviceWorker: ', err);
+                    });
             })
         }
     </script>
