@@ -73,7 +73,7 @@ function routerLink() {
         return false; // Sai do programa sem fazer mais nada.
     }
     if ( // Se o link começa com um destes termos...
-        href.substring(0, 7) == 'http://' ||
+        href.substring(0, 7) == 'http://' || // 26 OU
         href.substring(0, 8) == 'https://' ||
         href.substring(0, 4) == 'tel:' ||
         href.substring(0, 7) == 'mailto:'
