@@ -16,12 +16,14 @@
     <script>
 
         // URL base da API.
-        const apiBase = 'https://testeweb-7c6ca-default-rtdb.firebaseio.com/'
+        const apiBase = 'https://testeweb-7c6ca-default-rtdb.firebaseio.com/' 
 
         // Usando a biblioteca Axios (https://github.com/axios/axios)
+        /*
         axios.get(apiBase + 'item/.json')
             .then((response) => { // Sucesso!
-                console.log(response)
+                console.log(response.data['20d86b8bba3c72e4']['name'])
+                content.innerHTML = response.data['20d86b8bba3c72e4']['name']
             })
             .catch((error) => { // Falha!
                 console.log(error)
@@ -29,11 +31,13 @@
             .finally(() => { // Sempre!
                 console.log('aways run')
             })
-
+*/
         // Usando a biblioteca jQuery (https://github.com/jquery/jquery)
+        /*
         $.get(apiBase + 'item/.json')
             .done((response) => { // Sucesso!
                 console.log(response)
+                content.innerHTML = response['20d86b8bba3c72e4']['name']
             })
             .fail((error) => { // Falha!
                 console.log(error)
@@ -41,7 +45,7 @@
             .always(() => { // Sempre!
                 console.log('aways run')
             })
-
+*/
         // Usando a Fetch API do JavaScript (https://www.w3schools.com/jsref/api_fetch.asp)
         fetch(apiBase + 'item/.json')
             .then((data) => { // Pré-processamento...
