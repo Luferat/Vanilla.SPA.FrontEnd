@@ -1,11 +1,11 @@
 {
-    "siteFavicon": "assets/img/favicon.png",
-    "siteLogo": "assets/img/logotipo.png",
-    "siteName": "Cadastro de Trecos",
-    "siteSlogan": "Acumuladores ao Extremo!",
-    "apiBaseURL": "http://localhost:3000/",
-    "siteYear": 2019,
-    "siteOwner": "Eu Mesmo!",
+    "siteFavicon": "assets/icons/chave.jpg",
+    "siteLogo": "assets/icons/chave.jpg",
+    "siteName": "chaves",
+    "siteSlogan": "assets/img/chave.jpg",
+    "apiBaseURL": "http://localhost:8080/home",
+    "siteYear": 2023,
+    "siteOwner": "brendon",
     "siteMenu": [
         {
             "href": "home",
