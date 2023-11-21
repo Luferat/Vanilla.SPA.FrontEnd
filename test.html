@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimento de Cosumo de API REST</title>
+</head>
+
+<body>
+
+    <div id="content"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+
+        // URL base da API.
+        const apiBase = 'https://blablablablablablablabla.firebaseio.com/'
+
+        // Usando a biblioteca Axios (https://github.com/axios/axios)
+        axios.get(apiBase + 'item/.json')
+            .then((response) => { // Sucesso!
+                console.log(response.data['20d86b8bba3c72e4']['name']) // Exemplo.
+                content.innerHTML = response.data['20d86b8bba3c72e4']['name'] // Exemplo.
+            })
+            .catch((error) => { // Falha!
+                console.log(error)
+            })
+            .finally(() => { // Sempre!
+                console.log('aways run')
+            })
+
+        // Usando a biblioteca jQuery (https://github.com/jquery/jquery)
+        $.get(apiBase + 'item/.json')
+            .done((response) => { // Sucesso!
+                console.log(response)
+                content.innerHTML = response['20d86b8bba3c72e4']['name']
+            })
+            .fail((error) => { // Falha!
+                console.log(error)
+            })
+            .always(() => { // Sempre!
+                console.log('aways run')
+            })
+
+        // Usando a Fetch API do JavaScript (https://www.w3schools.com/jsref/api_fetch.asp)
+        fetch(apiBase + 'item/.json')
+            .then((data) => { // Pré-processamento...
+                return data.json()
+            })
+            .then((res) => { // Sucesso!
+                console.log(res)
+            })
+            .catch((error) => { // Falha!
+                console.log(error)
+            })
+            .finally(() => { // Sempre!
+                console.log('aways run')
+            })
+    </script>
+
+</body>
+
+</html>
