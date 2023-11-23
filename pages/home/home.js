@@ -24,9 +24,6 @@ function getItems(colectionName, endPoint, elementId) {
     // Prepara a view dos itens.
     var tableData;
 
-    // Monitora cliques nas opções.
-    $('.options a').click(optionAction);
-
     // Obtém os itens da API.
     $.get(app.apiBaseURL + endPoint)
 
@@ -59,6 +56,9 @@ function getItems(colectionName, endPoint, elementId) {
 
                 tableData += `<tr><td colspan="2">Total de ${numItems} ${colectionName}.</td></tr>`;
 
+                // Monitora cliques nas opções.
+                $('.options a').click(optionAction);
+
             } else {
                 tableData = `<tr><td colspan="2">Não temos ${colectionName} cadastrados!</td></tr>`;
             }
@@ -66,8 +66,11 @@ function getItems(colectionName, endPoint, elementId) {
         })
 }
 
-function optionAction(ev){
-    console.log(ev.target);
+function optionAction(ev) {
+    parts = $(this).attr('href').split('/')
+    if(parts[0] === 'delete'){
+        confirm(`Tem certeza que deseja apagar este registro?`)
+    }
     return false;
 }
 
