@@ -1,11 +1,9 @@
-// Executa o Aplicativo javaScript quando o documento estiver pronto.
-$(document).ready(myContacts)
-
 // nicializa a lista de redes sociais.
 var htmlSocialList = '';
 
 // Aplicativo principal.
 function myContacts() {
+
     // Define o título da página.
     changeTitle('Faça contato');
 
@@ -24,72 +22,103 @@ function myContacts() {
 
 // Aplicativo que processa o envio do formulário de contatos.
 function sendContact(ev) {
-    var feedback;
+
+    // Evita reenvio do formulário.
     ev.preventDefault();
+
+    // Variável para armazenar dados vindos do formulário e indo para a API.
     var formJSON = {};
+
+    // Obtém todos os dados do formulário enviado.
     const formData = new FormData(ev.target);
+
+    // Itera campos do formulário.
     formData.forEach((value, key) => {
+        // Sanitiza e valida cada campo usando a função '/index.js/stripTags()'.
         formJSON[key] = stripTags(value);
+
+        // Atualiza o campo com valores sanitizados.
         $('#' + key).val(formJSON[key]);
     });
 
+    // Itera campos do formulário.
     for (const key in formJSON)
+
+        // Se algum campo está vazio, retorna para o formulário.
         if (formJSON[key] == '')
             return false;
 
+    // Obtém a data atual da função '/index.js/now()'.
     formJSON.date = now();
+
+    // Valor padrão para o campo 'status'.
     formJSON.status = 'received';
 
-    if (saveData(formJSON)) {
-        var firstName = formJSON.name.split(' ')[0];
-        feedback = `
-            <h3>Olá ${firstName}!</h3>
-            <p>Seu contato foi enviado com sucesso.</p>
-            <p>Obrigado...</p>
-        `;
-    } else {
-        feedback = `
-            <h3>Oooops!</h3>
-            <p>Não foi possível enviar seu contato. Ocorreu uma falha no servidor.</p>
-        `;
-    }
+    // Envia dados para a API.
+    saveData(formJSON);
 
-    for (const key in formJSON)
-        $('#' + key).val('');
-
-    $('#contacts').html(feedback);
-
+    // Termina a função sem fazer mais nada.
     return false;
 }
 
 // Aplicativo que envia os dados do formulário para a API.
 function saveData(data) {
-    console.log(data);
+
+    // View para feedback ao usuário.
+    var feedback;
 
     // Executa o método POST na URL da API, passando os dados como parâmetro.
     $.post(
-        'https://frontendeiros2-default-rtdb.firebaseio.com/contact/.json',
+        app.apiBaseURL + '/contact/.json',
         JSON.stringify(data)
     )
-        .done((certo) => {
-            console.log('certo:', certo)
-            return true;
+
+        // Sucesso.
+        .done(() => {
+            var firstName = data.name.split(' ')[0];
+            feedback = `
+                <h3>Olá ${firstName}!</h3>
+                <p>Seu contato foi enviado com sucesso.</p>
+                <p>Obrigado...</p>
+            `;
         })
-        .fail((errou) => {
-            console.log('errou:', errou)
-            return false;
+
+        // Falhou.
+        .fail((error) => {
+            feedback = `
+                <h3>Oooops!</h3>
+                <p>Não foi possível enviar seu contato. Ocorreu uma falha no servidor.</p>
+                <p><em>${error}</em></p>
+            `;
+        })
+
+        // Sempre.
+        .always(() => {
+
+            // Limpa os campos do formulário.
+            for (const key in data)
+                $('#' + key).val('');
+
+            // Exibe feedback.    
+            $('#contacts').html(feedback);
         })
 }
 
 // Aplicativo que 'monta' a lista de redes sociais.
 function makeSocialList() {
+
+    // Itera lista de redes sociais.
     app.socialList.forEach(item => {
+
+        // Monta cada item das redes sociais em 'htmlSocialList'.
         htmlSocialList += `
             <a href="${item.href}" target="_blank" title="${item.title}">
                 <i class="${item.icon}"></i>
             </a>
         `;
     });
+
+    // Evia a lista para a view.
     $('#socialList').html(htmlSocialList);
 }
 
@@ -102,3 +131,6 @@ function animeIcon() {
 function noAnimeIcon() {
     $(this).children('i').removeClass('fa-beat-fade')
 }
+
+// Executa o Aplicativo javaScript quando o documento estiver pronto.
+$(document).ready(myContacts)

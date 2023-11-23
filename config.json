@@ -3,7 +3,7 @@
     "siteLogo": "assets/img/logotipo.png",
     "siteName": "Cadastro de Trecos",
     "siteSlogan": "Acumuladores ao Extremo!",
-    "apiBaseURL": "http://localhost:3000/",
+    "apiBaseURL": "https://frontendeiros2-default-rtdb.firebaseio.com",
     "siteYear": 2019,
     "siteOwner": "Eu Mesmo!",
     "siteMenu": [
