@@ -3,7 +3,7 @@
     "siteLogo": "assets/img/logotipo.avif",
     "siteName": "LOVE PETS",
     "siteSlogan": "Acumuladores ao Extremo!",
-    "apiBaseURL": "http://localhost:3000/",
+    "apiBaseURL": "http://localhost:5000",
     "siteYear": 2023,
     "siteOwner": "PETS!",
     "siteMenu": [
