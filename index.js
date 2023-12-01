@@ -131,6 +131,8 @@ function changeTitle(title = '') {
 function search() {
     var query = stripTags($("input[name='q']").val()); // jQuery: obtém e filtra o termo a ser buscado.
     console.log(query); // Debug: exibe no console. Será substituído pelo processamento do programa.
+    sessionStorage.search = query; // Armazena expressão de busca na sessão.
+    loadPage('search'); // Carrega a página de resultados da busca.
     return false; // Sai do programa sem fazer mais nada.
 }
 
@@ -185,6 +187,9 @@ function getClickedItem() {
 
     // Carrega a página 'view' para exibir detalhes do registro.
     loadPage('view');
+
+    // Limpa formulário da busca.
+    $('#search').trigger('reset');
 
     // Conclui sem fazer mais nada.
     return false;

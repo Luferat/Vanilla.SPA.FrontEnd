@@ -60,7 +60,7 @@ function saveData(formJSON) {
                 </form>
             `;
         })
-        .fail((error) => { // Se falhou, mostra feeback.
+        .fail((error) => {
             console.error('Erro:', error.status, error.statusText, error.responseJSON);
             viewHTML = `
                 <form>
