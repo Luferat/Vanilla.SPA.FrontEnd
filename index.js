@@ -1,35 +1,43 @@
+/**
+ * Este arquivo contém o aplicativo JavaScript principal, o "controller" do aplicativo.
+ * Também contém diversas funções necessárias para que o aplicativo principal funcione.
+ * Completando, diversas pequenas funções de uso geral que podem ser acessadas de qualquer página.
+ **/
+
+/** Inicializa super globais. **/
+
 var app; // Variável global que conterá as configurações do aplicativo.
 var header = menu = license = ''; // Variáveis globais com os componentes dinâmicos da 'view'.
 
-$(document).ready(runApp); // jQuery: quando o documento estiver na memória, executa 'runApp()'.
-
-function runApp() { // Aplicativo principal.
-    $.get('config.json') // jQuery: obtém o arquivo 'config.json' com as configurações do aplicativo.
+// Aplicativo principal.
+function runApp() {
+    $.get('./config.json') // jQuery: obtém o arquivo 'config.json' com as configurações do aplicativo.
         .done(data => { // jQuery: se deu certo...
             app = data; // Armazena as configurações na global 'app'.
-            configureTheme(); // Executa o programa que configura o tema conforme as configurações.
+            configureTheme(); // Configura o tema conforme as configurações.
 
             // A sessão 'path' contém o endereço da página que está sendo acessada atualmente.
             // Essa sessão é gerada pelos códigos da página '404.html'.
 
             if (sessionStorage.path == undefined) // Se a sessão está vazia...
-                sessionStorage.path = 'home'; // Armazena a página inicial na sessão.
-            path = sessionStorage.path; // Obtém o caminho da página atual.
+                path = 'home'; // Define o caminho da página inicial.
+            else // Se existe uma página na sessão...
+                path = sessionStorage.path; // Obtém o caminho da página atual da sessão.
             delete sessionStorage.path; // Apaga a sessão.
-            loadPage(path); // Executa o programa que carrega a página atual.
+            loadPage(path); // Carrega a página atual.
             $(document).on('click', 'a', routerLink); // jQuery: monitora eventos nas tags <a> e chama o programa 'routerLink()' quando ocorrer.
             $('#search').on('submit', search); // jQuery: se o formulário de busca for enviado, roda o programa 'search()'.
-        }).fail((e) => { // jQuery: se falhou...
-            console.error(e.statusText); // Exibe erro no console.
+        }).fail((error) => { // jQuery: se falhou...
+            console.error('Erro:', error.status, error.statusText, error.responseJSON); // Exibe erro no console.
             alert(`Erro! Arquivo de configuração não encontrado...`); // Exibe uma caixa de alerta para o usuário.
         });
 }
 
-// Programa que configura o tema conforme as configurações.
+// Função que configura o tema conforme as configurações.
 function configureTheme() {
     $('link[rel="icon"]').attr('href', app.siteFavicon); // jQuery: aplica o favicon em '<link rel="icon" href="favicon.png">'.
 
-    // Monta o cabeçalho com logotipo e nome do aplicativo.
+    // Monta o cabeçalho com logotipo e nome do aplicativo na variável global 'header'.
     header = `
         <a href="home" title="${app.siteName}"><img src="${app.siteLogo}" alt="${app.siteName}"></a>
         <h1>${app.siteName}</h1>
@@ -46,15 +54,15 @@ function configureTheme() {
             </a>
         `;
 
-    }); // Enquanto tiver itens de menu, o forEach vai rodar novamente.
+    }); // Enquanto tiver itens de menu, o forEach vai rodar novamente, adicionando (+=) novos itens no menu.
 
     let todayYear = new Date().getFullYear(); // Obtém a data atual e extrai o ano.
-    if (todayYear == app.siteYear) // Se o ano atual e igual ao ano da licensa...
+    if (todayYear == app.siteYear) // Se o ano atual e igual ao ano da licença do site...
         todayYear = ''; // Apaga o ano atual.
 
-    // Se o ano da licensa é diferente, mantém e exibe os dois anos.
+    // Se o ano da licença é diferente, mantém e exibe os dois anos.
 
-    // Monta o HTML da licensa que ficará no rodapé da página.
+    // Monta o HTML da licença que ficará no rodapé da página, na variável global 'license'.
     license = `
         &copy; ${app.siteYear} ${todayYear} ${app.siteOwner}
         <small><a href="policies">Políticas de Privacidade</a></small>
@@ -98,7 +106,8 @@ function loadPage(route, updateURL = true) {
             $('#content').html(htmlData); // jQuery: carrega o HTML da página em '<div id="content"></div>'.
             $.getScript(page.js); // jQuery: obtém o JavaScript da página, carrega na memória e roda.
         })
-        .fail(() => { // Se falhar...
+        .fail((error) => { // Se falhar...
+            console.error('Erro:', error.status, error.statusText, error.responseJSON);
             loadPage('e404', false); // Carrega a página "Erro 404" (rota 'e404') sem atualizar o endereço no navegador.
         })
     window.scrollTo(0, 0); // Rola a página para o início.
@@ -150,3 +159,37 @@ function dateISOtoBR(data) {
     if (parts[1]) outDate += ` ${parts[1]}`; // Adiciona a hora novamente.
     return outDate; // Retorna data formatada.
 }
+
+// Função de uso geral que processa um clique no item de coleção.
+function getClickedItem() {
+
+    // jQuery: captura a coleção que foi clicada.    
+    var collection = $(this).attr('class');
+
+    // jQuery: captura o 'id' do item clicado.
+    var id = $(this).attr('data-id');
+
+    // Debug: Mostra dados do item clicado.
+    console.log("Coleção:", collection, "ID:", id);
+    console.log("Endpoint:", `/${collection}/${id}`);
+
+    // Cria um JSON com os dados a serem passados para a página 'view'..
+    JSONData = {
+        "origin": "home",
+        "collection": collection,
+        "id": id
+    }
+
+    // Armazena o JSON no sessionStorage do navegador.
+    sessionStorage.viewData = JSON.stringify(JSONData);
+
+    // Carrega a página 'view' para exibir detalhes do registro.
+    loadPage('view');
+
+    // Conclui sem fazer mais nada.
+    return false;
+
+}
+
+// jQuery: quando o documento estiver na memória, executa 'runApp()'.
+$(document).ready(runApp); 

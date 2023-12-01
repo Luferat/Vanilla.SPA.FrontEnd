@@ -1,26 +1,27 @@
+// Aplicativo principal.
 function myView() {
 
     // Define o valor da tag <title>.
     changeTitle(`Exibir`);
 
-    // Ler a sessão e converter para JavaScript.
+    // Lê a sessão e converte o JSON para JavaScript Data Object.
     const viewData = JSON.parse(sessionStorage.viewData);
 
     // Debug: verifica os dados da sessão.
     console.log(viewData);
 
-    // Debug: verifica os dados da sessão.
-    console.log(viewData);
+    // Limpa a sessão atual.
+    // delete sessionStorage.viewData;
 
-    // Conforme a coleção...
+    // Conforme a coleção solicitada...
     switch (viewData.collection) {
 
-        // Se é 'item', chama a função 'loadAPIItem()';
+        // Se é 'items', chama a função 'loadAPIItem()';
         case 'items':
             loadAPIItem(viewData);
             break;
 
-        // Se é 'owner', chama a função 'loadAPIOwner()';
+        // Se é 'owners', chama a função 'loadAPIOwner()';
         case 'owners':
             loadAPIOwner(viewData);
             break;
@@ -30,7 +31,7 @@ function myView() {
     return false;
 }
 
-
+// Função que obtém um 'item' da API.
 function loadAPIItem(viewData) {
 
     // Monta a URL da requisição.
@@ -39,10 +40,10 @@ function loadAPIItem(viewData) {
     // Debug: mostra URL da requisição.
     console.log('Request URL:', requestURL);
 
-    // Acessa a API.
+    // jQuery: acessa a API.
     $.get(requestURL)
 
-        // Se deu certo, 'getData' contém os dados vindos da API.
+        // jQuery: se deu certo, 'getData' contém os dados vindos da API.
         .done((getData) => {
 
             // Debug: exibe dados obtidos sa API.
@@ -57,20 +58,20 @@ function loadAPIItem(viewData) {
 
             // Formata a saída para a view.
             var viewHTML = `
-             <h3>${getData.name}</h3>
-             <ul>
-                 <li><strong>ID: </strong>${getData.id}</li>
-                 <li><strong>Cadastro: </strong>${dateBr}</li>
-                 <li><strong>Descrição: </strong>${getData.description}</li>
-                 <li><strong>Localização: </strong>${getData.location}</li>
-                 <li><strong>Status: </strong>${thisStatus}</li>
-             </ul>                
-         `;
+                <h3>${getData.name}</h3>
+                <ul>
+                    <li><strong>ID: </strong>${getData.id}</li>
+                    <li><strong>Cadastro: </strong>${dateBr}</li>
+                    <li><strong>Descrição: </strong>${getData.description}</li>
+                    <li><strong>Localização: </strong>${getData.location}</li>
+                    <li><strong>Status: </strong>${thisStatus}</li>
+                </ul>                
+            `;
 
-            // Envia para a view.
+            // jQuery: envia HTML para a view.
             $('#viewItem').html(viewHTML);
 
-            // Refatora viewData.
+            // Refatora viewData para obter o proprietário.
             viewData = {
                 "origin": "view",
                 "collection": "owners",
@@ -85,15 +86,23 @@ function loadAPIItem(viewData) {
 
         })
 
-        // Se deu erro.
+        // jQuery: se deu erro...
         .fail((error) => {
+            console.error('Erro:', error.status, error.statusText, error.responseJSON);
             viewHTML = `<p>Oooops! O registro não pode ser obtido!</p>`;
             $('#viewItem').html(viewHTML);
         });
 
+    for (const key in formJSON) // Itera e lima os campos do formulário.
+        $('#' + key).val('');
+
+    $('#contacts').html(viewHTML);
+
+    // Conclui sem fazer mais nada.
     return false;
 }
 
+// Função que obtém um 'owner' da API.
 function loadAPIOwner(viewData) {
 
     // Monta URL da requisição.
@@ -148,6 +157,7 @@ function loadAPIOwner(viewData) {
 
         // Se deu erro.
         .fail((error) => {
+            console.error('Erro:', error.status, error.statusText, error.responseJSON);
             var viewHTML = `<p>Oooops! O registro não pode ser obtido!</p>`;
             $('#viewOwner').html(viewHTML);
         });
@@ -179,22 +189,29 @@ function getAllItemsFromOwner(ownerId) {
             getData.forEach((data) => {
 
                 // Monta a view.
-                viewHTML += `<li>${data.name}</li>`;
+                viewHTML += `<li class="items" data-id="${data.id}">${data.name}</li>`;
 
             });
 
             // Exibe a view.
             $('#ownerItems').html(viewHTML);
 
+            // Monitora cliques nos itens da lista.
+            $('.items').click(getClickedItem);
+
         })
 
         // Se deu erro.
         .fail((error) => {
+            console.error('Erro:', error.status, error.statusText, error.responseJSON);
             var viewHTML = `<p>Oooops! Este usuário não tem itens!</p>`;
             $('#ownerItems').html(viewHTML);
         });
 
+    // Conclui sem fazer mais nada.
+    return false;
+
 }
 
-// Executa o aplicativo JavaScript quando a página estiver toda carregada.
+// Roda o aplicativo principal quando a página estiver pronta.
 $(document).ready(myView);
