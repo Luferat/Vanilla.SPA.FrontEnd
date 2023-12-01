@@ -129,8 +129,8 @@ function changeTitle(title = '') {
 
 // Programa que executa uma busca.
 function search() {
-    var query = stripTags($("input[name='q']").val()); // Obtém e filtra o termoa ser buscado.
-    console.log(query); // Exibe no console. Será substituído pelo processamento do programa.
+    var query = stripTags($("input[name='q']").val()); // jQuery: obtém e filtra o termo a ser buscado.
+    console.log(query); // Debug: exibe no console. Será substituído pelo processamento do programa.
     return false; // Sai do programa sem fazer mais nada.
 }
 

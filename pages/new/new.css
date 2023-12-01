@@ -1,0 +1,79 @@
+.navbar {
+    text-align: center;
+}
+
+.tabBlock form {
+    display: table;
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.tabBlock label {
+    display: block;
+    padding-bottom: .25rem;
+}
+
+.tabBlock input,
+.tabBlock textarea,
+.tabBlock select {
+    border: 1px solid red;
+    border-bottom: 3px solid red;
+    background-color: rgb(255, 230, 230);
+    border-radius: .3rem;
+    width: 100%;
+}
+
+.tabBlock textarea {
+    resize: vertical;
+    height: 3.3rem;
+    scrollbar-width: thin;
+    scrollbar-color: darkgrey lightgrey;
+}
+
+.tabBlock textarea::-webkit-scrollbar {
+    width: 12px;
+}
+
+.tabBlock textarea::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+}
+
+.tabBlock textarea::-webkit-scrollbar-track {
+    background-color: lightgrey;
+}
+
+.tabBlock button {
+    background-color: steelblue;
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    color: white;
+    cursor: pointer;
+}
+
+.tabBlock small {
+    color: grey;
+}
+
+.active {
+    background-color: steelblue !important;
+    color: white !important;
+}
+
+.inactive {
+    background-color: gray !important;
+    color: white !important;
+}
+
+.tabBlock input:valid,
+.tabBlock textarea:valid,
+.tabBlock select:valid {
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+    background-color: rgb(232, 240, 254);
+}
+
+.tabBlock form:invalid button {
+    background-image: linear-gradient(rgb(172, 172, 172), rgb(76, 76, 76));
+    pointer-events: none;
+}

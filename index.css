@@ -236,14 +236,17 @@ footer * {
 input[type=text],
 input[type=search],
 input[type=email],
+input[type=date],
 button,
-textarea {
+textarea,
+select {
     font-family: inherit;
     font-size: inherit;
     padding: .35rem .5rem;
     border: none;
 }
 
+/*
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -262,3 +265,4 @@ textarea {
     background-color: rgb(94, 173, 237);
     border: none;
 }
+*/

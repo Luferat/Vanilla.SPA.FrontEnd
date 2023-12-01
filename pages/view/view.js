@@ -58,15 +58,15 @@ function loadAPIItem(viewData) {
 
             // Formata a saída para a view.
             var viewHTML = `
-                <h3>${getData.name}</h3>
-                <ul>
-                    <li><strong>ID: </strong>${getData.id}</li>
-                    <li><strong>Cadastro: </strong>${dateBr}</li>
-                    <li><strong>Descrição: </strong>${getData.description}</li>
-                    <li><strong>Localização: </strong>${getData.location}</li>
-                    <li><strong>Status: </strong>${thisStatus}</li>
-                </ul>                
-            `;
+             <h3>${getData.name}</h3>
+             <ul>
+                 <li><strong>ID: </strong>${getData.id}</li>
+                 <li><strong>Cadastro: </strong>${dateBr}</li>
+                 <li><strong>Descrição: </strong>${getData.description}</li>
+                 <li><strong>Localização: </strong>${getData.location}</li>
+                 <li><strong>Status: </strong>${thisStatus}</li>
+             </ul>                
+         `;
 
             // jQuery: envia HTML para a view.
             $('#viewItem').html(viewHTML);
@@ -93,10 +93,8 @@ function loadAPIItem(viewData) {
             $('#viewItem').html(viewHTML);
         });
 
-    for (const key in formJSON) // Itera e lima os campos do formulário.
+    for (const key in viewData) // Itera e lima os campos do formulário.
         $('#' + key).val('');
-
-    $('#contacts').html(viewHTML);
 
     // Conclui sem fazer mais nada.
     return false;
@@ -111,7 +109,7 @@ function loadAPIOwner(viewData) {
     // Debug: mostra URL da requisição.
     console.log('Request URL:', requestURL);
 
-    // Acessa a API.
+    // jQuery: acessa a API.
     $.get(requestURL)
 
         // Se deu certo, 'getData' contém os dados vindos da API.
@@ -147,7 +145,7 @@ function loadAPIOwner(viewData) {
              <ul id="ownerItems"></ul>           
          `;
 
-            // Envia para a view.
+            // jQuery: envia para a view.
             $('#viewOwner').html(viewHTML);
 
             // Obtém todos os item do owner.
@@ -171,9 +169,11 @@ function getAllItemsFromOwner(ownerId) {
 
     // Monta URL da requisição.
     requestURL = `${app.apiBaseURL}/owners/items/${ownerId}`;
+
+    // Debug: URL da requisição.
     console.log(requestURL);
 
-    // Acessa a API.
+    // jQuery: acessa a API.
     $.get(requestURL)
 
         // Se deu certo, 'getData' contém os dados vindos da API.
@@ -182,7 +182,7 @@ function getAllItemsFromOwner(ownerId) {
             // Lista de items vazia.
             viewHTML = '';
 
-            // Debug.
+            // Debug: dados vindos da API.
             console.log("All items:", getData);
 
             // Itera cada item obtido.
@@ -193,10 +193,10 @@ function getAllItemsFromOwner(ownerId) {
 
             });
 
-            // Exibe a view.
+            // jQuery: exibe a view.
             $('#ownerItems').html(viewHTML);
 
-            // Monitora cliques nos itens da lista.
+            // jQuery: monitora cliques nos itens da lista.
             $('.items').click(getClickedItem);
 
         })
@@ -213,5 +213,5 @@ function getAllItemsFromOwner(ownerId) {
 
 }
 
-// Roda o aplicativo principal quando a página estiver pronta.
+// jQuery: roda o aplicativo principal quando a página estiver pronta.
 $(document).ready(myView);

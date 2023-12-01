@@ -16,8 +16,10 @@
             window.addEventListener("load", () => {
                 navigator.serviceWorker.register('service-worker.js')
                     .then(function (registration) {
-                        console.log('ServiceWorker registrado');
+                        // Debug: 
+                        console.log('ServiceWorker registrado: ', registration);
                     }).catch(function (err) {
+                        // Debug:                         
                         console.log('Falha no serviceWorker: ', err);
                     });
             })

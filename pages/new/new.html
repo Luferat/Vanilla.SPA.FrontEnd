@@ -1,6 +1,90 @@
 <article>
+
     <h2>Novo Documento</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ipsa exercitationem, hic illum eum quidem velit tempora deleniti magni quasi cumque eveniet. Corporis eos doloribus et eaque necessitatibus! Placeat, quaerat!</p>
+    
+    <div class="tabBlock">
+
+        <p>Selecione aguia correspondente:</p>
+
+        <div class="navbar">
+
+            <button id="btnNewOwner" value="owner" class="inactive">Proprietário</button>
+            <button id="btnNewItem" value="item" class="inactive">Treco</button>
+
+        </div>
+        <div class="tabs">
+
+            <div id="tabOwner">
+
+                <form id="formNewOwner">
+                    <input type="hidden" name="type" value="owner">
+
+                    <p>
+                        <label for="ownerName">Nome:</label>
+                        <input type="text" name="ownerName" id="ownerName" required minlength="3">
+                    </p>
+
+                    <p>
+                        <label for="email">E-mail:</label>
+                        <input type="email" name="email" id="email" required>
+                    </p>
+
+                    <p>
+                        <label for="password">Senha:</label>
+                        <input type="text" name="password" id="password" required minlength="4">
+                    </p>
+
+                    <p>
+                        <label for="birth">Nascimento:</label>
+                        <input type="date" name="birth" id="birth" required>
+                    </p>
+
+                    <p>
+                        <button type="submit">Salvar</button>
+                        <small>&larr; Clique somente uma vez.</small>
+                    </p>
+
+                </form>
+
+            </div>
+            <div id="tabItem">
+
+                <form id="formNewItem">
+                    <input type="hidden" name="type" value="item">
+
+                    <p>
+                        <label for="itemName">Nome:</label>
+                        <input type="text" name="itemName" id="itemName" required minlength="3">
+                    </p>
+
+                    <p>
+                        <label for="description">Descrição:</label>
+                        <textarea name="description" id="description" required minlength="5"></textarea>
+                    </p>
+
+                    <p>
+                        <label for="location">Localização:</label>
+                        <input type="text" name="location" id="location" required minlength="3">
+                    </p>
+
+                    <p>
+                        <label for="owner">Proprietário:</label>
+                        <select name="owner" id="owner" required></select>
+                    </p>
+
+                    <p>
+                        <button type="submit">Salvar</button>
+                        <small>&larr; Clique somente uma vez.</small>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </article>
 
 <aside>

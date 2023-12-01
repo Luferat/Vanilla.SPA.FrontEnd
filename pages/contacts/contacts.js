@@ -63,38 +63,31 @@ function saveData(data) {
         url: requestURL,
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) { // Se deu certo, mostra feedback.
+        dataType: "json"
+    })
+        .done((data) => { // Se deu certo, mostra feedback.
             var firstName = data.name.split(' ')[0]; // Extrai primeiro nome do remetente.
             viewHTML = `
                 <h3>Olá ${firstName}!</h3>
                 <p>Seu contato foi enviado com sucesso.</p>
                 <p>Obrigado...</p>
             `;
-            $('#contacts').html(viewHTML);
-            clearForm(data);
-        },
-        error: function (error) { // Se falhou, mostra feeback.
+        })
+        .fail((error) => { // Se falhou, mostra feeback.
             console.error('Erro:', error.status, error.statusText, error.responseJSON);
             viewHTML = `
                 <h3>Oooops!</h3>
                 <p>Não foi possível enviar seu contato. Ocorreu uma falha no servidor.</p>
             `;
+        })
+        .always(() => { // Sempre.
             $('#contacts').html(viewHTML);
-            clearForm(data);
-        }
-    });
+            $('#contacts').trigger('reset');
+        });
 
     // Conclui sem fazer mais nada.
     return false;
 
-}
-
-// Função que 'limpa' campos do formulário.
-function clearForm(data) {
-    // Itera campos do formulário e limpa os valores.
-    for (const key in data)
-        $('#' + key).val('');
 }
 
 // Função que 'monta' a lista de redes sociais.
