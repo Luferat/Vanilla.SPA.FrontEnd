@@ -26,7 +26,7 @@ function runApp() { // Aplicativo principal.
 }
 
 // Programa que configura o tema conforme as configurações.
-function configureTheme() { 
+function configureTheme() {
     $('link[rel="icon"]').attr('href', app.siteFavicon); // jQuery: aplica o favicon em '<link rel="icon" href="favicon.png">'.
 
     // Monta o cabeçalho com logotipo e nome do aplicativo.
@@ -84,7 +84,7 @@ function routerLink() {
 
 // Programa que carrega a página atual em '<div id="content"></div>'.
 function loadPage(route, updateURL = true) {
-    
+
     // A variável local 'page' contém os componentes da página a ser carregada.
     let page = {
         html: `pages/${route}/${route}.html`, // Componente HTML.
@@ -140,4 +140,13 @@ function now() {
     const dateParts = yourDate.toISOString().split('T'); // Separa data (dateParts[0]) e hora (dateParts[1]).
     const timeParts = dateParts[1].split('.')[0]; // Remove os milissegundos da hora.
     return dateParts[0] + ' ' + timeParts; // Retorna a data, um espaço e a hora.
+}
+
+// Converte uma data ISO para BR.
+function dateISOtoBR(data) {
+    var parts = data.split(" "); // Separa data da hora.
+    var pDate = parts[0].split('-'); // Separa partes da data.
+    var outDate = `${pDate[2]}/${pDate[1]}/${pDate[0]}`; // Remonta a data.
+    if (parts[1]) outDate += ` ${parts[1]}`; // Adiciona a hora novamente.
+    return outDate; // Retorna data formatada.
 }
